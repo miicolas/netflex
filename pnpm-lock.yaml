@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      lucide-vue:
+        specifier: ^0.468.0
+        version: 0.468.0(vue@3.5.13)
+      lucide-vue-next:
+        specifier: ^0.468.0
+        version: 0.468.0(vue@3.5.13)
       vue:
         specifier: ^3.5.13
         version: 3.5.13
@@ -959,6 +965,16 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
+
+  lucide-vue-next@0.468.0:
+    resolution: {integrity: sha512-quV/6T8YB1XK0VOEnebg3Byd8Rsan5/m95cvjnuHV4vcS3qEnLAybkrSh0hk3ppavx+V7R1PjNW+mGDvcBdz4A==}
+    peerDependencies:
+      vue: '>=3.0.1'
+
+  lucide-vue@0.468.0:
+    resolution: {integrity: sha512-q1QgltU+rdq1m323D9tkYTHR2uSo6PJOvHUPBpwKDuuLHOvC4Ir2fuw5v3hLxaHdg5Nuhfm3FMacpK20FgXKqg==}
+    peerDependencies:
+      vue: ^2.6.12
 
   magic-string@0.30.15:
     resolution: {integrity: sha512-zXeaYRgZ6ldS1RJJUrMrYgNJ4fdwnyI6tVqoiIhyCyv5IVTK9BU8Ic2l253GGETQHxI4HNUwhJ3fjDhKqEoaAw==}
@@ -2190,6 +2206,14 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
+
+  lucide-vue-next@0.468.0(vue@3.5.13):
+    dependencies:
+      vue: 3.5.13
+
+  lucide-vue@0.468.0(vue@3.5.13):
+    dependencies:
+      vue: 3.5.13
 
   magic-string@0.30.15:
     dependencies:

@@ -1,7 +1,14 @@
 <script setup>
+import Button from "@/components/buttons.vue";
+import { Star } from "lucide-vue-next";
+
 const { top1 } = defineProps(["top1"]);
 
-console.log(top1, "props");
+const calculatePopularity = (top1) => {
+  top1.vote_average = (top1.vote_average / 10) * 5;
+  return top1.vote_average;
+};
+calculatePopularity(top1);
 </script>
 
 <template v-if="top1">
@@ -19,10 +26,24 @@ console.log(top1, "props");
         {{ top1.overview }}
       </p>
     </div>
-    <p>Note : 5</p>
+    <div class="star-list">
+      <div
+        v-for="index in Math.round(Math.round(top1.vote_average))"
+        :key="index"
+      >
+        <Star size="24" fill="yellow" />
+      </div>
+      <div
+        v-for="index in Math.floor(5 - Math.round(top1.vote_average))"
+        :key="index"
+      >
+        <Star size="24" />
+      </div>
+      <span>{{ top1.vote_average }}</span>
+    </div>
     <div>
-      <button>Regarder</button>
-      <button>Tous les épisodes</button>
+      <Button type="primary">En savoir plus</Button>
+      <Button type="secondary"> Ajouter à la liste</Button>
     </div>
   </section>
 </template>
@@ -57,5 +78,11 @@ console.log(top1, "props");
   font-size: 1.5rem;
   max-width: 50%;
   color: #a7a6a6;
+}
+
+.star-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 </style>

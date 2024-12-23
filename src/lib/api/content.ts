@@ -1,3 +1,5 @@
+console.log(import.meta.env.VITE_API_TMDB_BEARER_TOKEN, "import.meta.env.VITE_API_TMDB_BEARER_TOKEN");
+
 export async function getTrending() {
     return fetch("https://api.themoviedb.org/3/trending/all/day?language=fr-FR", {
         method: "GET",

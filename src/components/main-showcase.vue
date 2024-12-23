@@ -1,0 +1,63 @@
+<script setup lang="ts">
+import {Bookmark, Info} from "lucide-vue-next";
+import { getGenres } from "../lib/api/content";
+import { defineProps, ref, onMounted } from 'vue';
+
+const props = defineProps<{
+  trending: {
+    name: string;
+    overview: string;
+    poster_path: string;
+    backdrop_path: string;
+    first_air_date: string;
+    genre_ids: number[];
+    id: number;
+    duration: string;
+    popularity: number;
+  } | null;
+}>();
+
+console.log(props.trending, 'props.trending');
+
+const genre = ref<string[]>([]);
+
+onMounted(async () => {
+  const genres = await getGenres({ ids: props.trending.genre_ids });
+  genre.value = genres.map(g => g.name);
+});
+
+</script>
+
+<template>
+  <div
+      class="w-full h-[60vh] relative bg-cover bg-center bg-no-repeat before:absolute before:inset-0 before:bg-gradient-to-t before:from-black/70 before:to-transparent rounded-lg"
+      :style="{
+      backgroundImage: `url(https://image.tmdb.org/t/p/original/${props.trending.backdrop_path})`
+    }"
+
+  >
+    <div class="absolute bottom-0 left-0 text-white z-10 space-y-2 p-4">
+      <h1 class="text-4xl font-black mb-4">{{ props.trending.name }}</h1>
+      <p class="text-gray-300 text-sm">
+        {{ props.trending.overview }}
+      </p>
+      <div class="flex items-start gap-2 text-sm">
+        {{genre.join(" • ") }}
+        •
+        <p class="flex items-center gap-2">
+          {{ props.trending.popularity }}
+        </p>
+      </div>
+      <div class="flex items-center gap-6 text-sm">
+        <button class="bg-red-600 text-white p-2 gap-2 rounded-lg flex items-center border border-red-700">
+          <Bookmark/>
+          <p class="hidden md:block">Télécharger</p>
+        </button>
+        <button class="bg-white text-gray-950 p-2 gap-2 rounded-lg flex items-center border border-red-700">
+          <Info/>
+          <p class="hidden md:block">En savoir plus</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</template>

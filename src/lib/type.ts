@@ -33,3 +33,17 @@ export interface TVShow extends MediaBase {
 }
 
 export type MediaContent = Movie | TVShow
+
+export interface TrendingItem {
+    title: string | null;
+    name: string | null;
+    overview: string;
+    poster_path: string;
+    backdrop_path: string;
+    first_air_date: string;
+    genre_ids: number[];
+    id: number;
+    duration: string;
+    popularity: number;
+    media_type: MediaContent;
+}

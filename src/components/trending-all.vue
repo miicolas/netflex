@@ -4,21 +4,9 @@ import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
 import { ChevronRightIcon } from 'lucide-vue-next';
 import CarouselView from './carousel-view.vue';
-import type { MediaContent } from "../lib/type.ts";
+import type { TrendingItem } from "../lib/type.ts";
 
-interface TrendingItem {
-  title: string | null;
-  name: string | null;
-  overview: string;
-  poster_path: string;
-  backdrop_path: string;
-  first_air_date: string;
-  genre_ids: number[];
-  id: number;
-  duration: string;
-  popularity: number;
-  media_type: MediaContent;
-}
+
 
 const props = defineProps<{
   trending: TrendingItem[];

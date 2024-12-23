@@ -13,16 +13,26 @@ export async function getTrending() {
 }
 
 export async function getGenres({ ids, media_type }: { ids: number[], media_type: 'tv' | 'movie' }) {
-    const response = await fetch(`https://api.themoviedb.org/3/${media_type}/genre/list?language=fr-FR`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_API_TMDB_BEARER_TOKEN}`,
-        },
-    });
-    const data = await response.json();
-    const genres = data.genres.filter((genre: { id: number }) => ids.includes(genre.id));
-    return genres;
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/genre/${media_type}/list?language=fr-FR`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${import.meta.env.VITE_API_TMDB_BEARER_TOKEN}`,
+            },
+        });
+        const data = await response.json();
+
+        if (!data.genres || !Array.isArray(data.genres)) {
+            throw new Error('Invalid genres data');
+        }
+
+        const genres = data.genres.filter((genre: { id: number }) => ids.includes(genre.id));
+        return genres;
+    } catch (error) {
+        console.error('Error fetching genres:', error);
+        return [];
+    }
 }
 
 export async function getContent({ id, media_type }: { id: string, media_type: 'tv' | 'movie' }) {

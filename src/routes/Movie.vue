@@ -116,7 +116,6 @@ onMounted(async () => {
       </div>
     </div>
 
-    <!-- Production Companies -->
     <section class="p-8">
       <h2 class="text-2xl font-bold text-white mb-4">Production</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -136,7 +135,6 @@ onMounted(async () => {
       </div>
     </section>
 
-    <!-- Similar Movies -->
     <section v-if="similar.length" class="p-8">
       <h2 class="text-2xl font-bold text-white mb-4">Films Similaires</h2>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">

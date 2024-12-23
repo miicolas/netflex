@@ -2,6 +2,8 @@
 import { Bookmark, Info } from "lucide-vue-next";
 import { getGenres } from "../lib/api/content";
 import { defineProps, ref, onMounted, computed } from 'vue';
+import { MediaType } from '../lib/type.ts';
+import { RouterLink } from 'vue-router';
 
 const props = defineProps<{
   trending: {
@@ -14,6 +16,7 @@ const props = defineProps<{
     id: number;
     duration: string;
     popularity: number;
+    media_type: MediaType;
   } | null;
 }>();
 
@@ -21,7 +24,7 @@ const genre = ref<string[]>([]);
 
 onMounted(async () => {
   if (props.trending) {
-    const genres = await getGenres({ ids: props.trending.genre_ids });
+    const genres = await getGenres({ ids: props.trending.genre_ids, media_type: props.trending.media_type });
     genre.value = genres.map((g: { name: string }) => g.name);
   }
 });
@@ -56,10 +59,10 @@ const backgroundImage = computed(() => {
           <Bookmark />
           <p class="hidden md:block">Télécharger</p>
         </button>
-        <button class="bg-white text-gray-950 p-2 gap-2 rounded-lg flex items-center border border-red-700">
+        <RouterLink :to="`/details/${props.trending.id}/${props.trending.media_type}`" class="bg-red-600 text-white p-2 gap-2 rounded-lg flex items-center border border-red-700 h-fit w-fit">
           <Info />
           <p class="hidden md:block">En savoir plus</p>
-        </button>
+        </RouterLink>
       </div>
     </div>
   </div>

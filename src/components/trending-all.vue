@@ -26,6 +26,7 @@ const props = defineProps<{
 }>();
 
 const movies = props.trending;
+
 </script>
 
 <template>
@@ -37,6 +38,6 @@ const movies = props.trending;
         <ChevronRightIcon class="w-6 h-6 text-white" />
       </RouterLink>
     </div>
-    <CarouselView :items="movies.map(movie => ({ id: movie.id, name: movie.title || movie.name || '', poster_path: movie.poster_path }))" />
+    <CarouselView :items="movies.map(movie => ({ id: movie.id, name: movie.title || movie.name || '', poster_path: movie.poster_path, media_type: movie.media_type }))" />
   </section>
 </template>

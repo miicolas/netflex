@@ -2,11 +2,10 @@
 import { defineProps } from 'vue';
 import CardView from "./card-view.vue";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-vue-next";
-
-type MediaType = 'tv' | 'movie';
+import type { MediaContent } from "../lib/type.ts";
 
 const props = defineProps<{
-  items: { id: number; name: string; poster_path: string; media_type: MediaType }[];
+  items: { id: number; name: string; poster_path: string; media_type: MediaContent }[];
 }>();
 
 const prev = () => {

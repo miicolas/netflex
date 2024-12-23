@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import { Star, Plus, ArrowLeftIcon, Home} from 'lucide-vue-next'
 import { getContent, recommendedMovies } from '../lib/api/content'
 import { RouterLink } from 'vue-router'
-import { MediaContent, Movie, TVShow } from '../lib/type.ts'
+import type { MediaContent, Movie, TVShow } from '../lib/type.ts'
 
 const route = useRoute()
 const media = ref<MediaContent | null>(null)

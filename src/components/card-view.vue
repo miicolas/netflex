@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
-
-type MediaType = 'tv' | 'movie';
+import type { MediaContent } from "../lib/type.ts";
 
 const props = defineProps<{
   name: string;
   poster_path: string;
   id: number;
-  media_type: MediaType;
+  media_type: MediaContent;
 }>();
 
 </script>

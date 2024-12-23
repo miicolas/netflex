@@ -2,7 +2,6 @@
 import { Bookmark, Info } from "lucide-vue-next";
 import { getGenres } from "../lib/api/content";
 import { defineProps, ref, onMounted, computed } from 'vue';
-import { MediaType } from '../lib/type.ts';
 import { RouterLink } from 'vue-router';
 
 const props = defineProps<{
@@ -16,7 +15,7 @@ const props = defineProps<{
     id: number;
     duration: string;
     popularity: number;
-    media_type: MediaType;
+    media_type: 'tv' | 'movie';
   } | null;
 }>();
 

@@ -8,10 +8,14 @@ import type { SearchItem } from "../lib/type.ts";
 const query = ref('');
 const results = ref([ <SearchItem>{} ]);
 
+
+
 const search = async () => {
   const data = await searchContent(query.value);
   results.value = data.results;
 }
+
+console.log(results.value, 'results')
 </script>
 
 <template>
@@ -36,13 +40,12 @@ const search = async () => {
         >
       </div>
 
-      <div class="space-y-8" v-if="results.length > 0">
+      <div class="space-y-8" v-if="results.length >= 1">
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           <div v-for="item in results"
                :key="item.id"
                class="group relative transition-transform duration-300 hover:scale-110 hover:z-10">
             <CardView :id="item.id" :name="item.title || item.name" :poster_path="item.poster_path" :media_type="item.media_type"/>
-
           </div>
         </div>
       </div>

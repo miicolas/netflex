@@ -71,3 +71,15 @@ export const searchContent = async (query: string) => {
         return res.json();
     });
 }
+
+export const getSeasons = async ({ id, season_number }: { id: string, season_number: number }) => {
+    return fetch(`https://api.themoviedb.org/3/tv/${id}/season/${season_number}?language=fr-FR`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_API_TMDB_BEARER_TOKEN}`,
+        },
+    }).then((res) => {
+        return res.json();
+    });
+}

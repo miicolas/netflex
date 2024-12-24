@@ -8,6 +8,7 @@ import SimilarContent from "../components/_details/similar-content.vue";
 import ProductionContent from "../components/_details/production-content.vue";
 import TVContent from "../components/_details/tv-content.vue";
 import HeroContent from "../components/_details/hero-content.vue";
+import EpisodeContent from "../components/_details/episode-content.vue";
 
 const route = useRoute()
 const media = ref<MediaContent | null>(null)
@@ -71,6 +72,7 @@ window.addEventListener('resize', updateScreenSize)
 
     <HeroContent :media="media" :isTV="isTV" :SmallScreen="isSmallScreen"/>
     <TVContent :media="media" :isTV="isTV"/>
+    <EpisodeContent :media="media" :isTV="isTV"/>
     <ProductionContent :media="media"/>
     <SimilarContent :similar="similar" :isTV="isTV"/>
   </main>

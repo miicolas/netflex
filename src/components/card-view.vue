@@ -13,7 +13,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <RouterLink :to="`/details/${props.id}/${props.media_type}`" class="w-fit">
+  <RouterLink :to="`/details/${props.id}/${props.media_type}`" class="w-fit cursor-pointer hover:scale-105">
     <div class="flex gap-4 w-fit">
       <img :src="`https://image.tmdb.org/t/p/w500/${props.poster_path}`" class="w-40 rounded-lg" :alt="props.name"/>
     </div>

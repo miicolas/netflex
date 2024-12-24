@@ -53,8 +53,18 @@ window.addEventListener('resize', updateScreenSize)
 
 <template>
   <div class="absolute top-8 left-8 text-white cursor-pointer z-30 flex items-center justify-center gap-2">
-    <ArrowLeftIcon class="w-8 h-8" @click="$router.back()"/>
-    <Home class="w-8 h-8" @click="$router.push('/')"/>
+    <button
+        @click="$router.back()"
+        class="flex items-center gap-2 p-2 hover:bg-gray-800/50 rounded-full transition-colors z-50"
+    >
+      <ArrowLeftIcon class="w-6 h-6" />
+    </button>
+    <button
+        @click="$router.push('/')"
+        class="flex items-center gap-2 p-2 hover:bg-gray-800/50 rounded-full transition-colors z-50"
+    >
+      <Home class="w-6 h-6" />
+    </button>
   </div>
   <main v-if="media" class="min-h-screen bg-zinc-900">
 

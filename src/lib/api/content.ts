@@ -59,3 +59,15 @@ export async function recommendedMovies({ id, media_type}: { id: string, media_t
         return res.json();
     });
 }
+
+export const searchContent = async (query: string) => {
+    return fetch(`https://api.themoviedb.org/3/search/multi?language=fr-FR&query=${query}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_API_TMDB_BEARER_TOKEN}`,
+        },
+    }).then((res) => {
+        return res.json();
+    });
+}

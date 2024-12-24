@@ -47,3 +47,22 @@ export interface TrendingItem {
     popularity: number;
     media_type: MediaContent;
 }
+
+export interface Episode {
+    id: number;
+    name: string;
+    overview: string;
+    still_path: string;
+    episode_number: number;
+    season_number: number;
+    runtime: number;
+}
+
+export interface SearchItem {
+    id: number;
+    title: string;
+    name: string;
+    poster_path: string;
+    backdrop_path: string;
+    media_type: MediaContent;
+}

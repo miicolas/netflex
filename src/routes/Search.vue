@@ -3,9 +3,10 @@ import { ArrowLeftIcon } from "lucide-vue-next";
 import { ref } from "vue";
 import CardView from "../components/card-view.vue";
 import { searchContent } from "../lib/api/content";
+import type { SearchItem } from "../lib/type.ts";
 
 const query = ref('');
-const results = ref([]);
+const results = ref([ <SearchItem>{} ]);
 
 const search = async () => {
   const data = await searchContent(query.value);

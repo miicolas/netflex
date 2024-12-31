@@ -4,12 +4,11 @@ import { RouterLink } from 'vue-router';
 import type { MediaContent } from "../lib/type.ts";
 
 const props = defineProps<{
+  id: number;
   name: string;
   poster_path: string;
-  id: number;
   media_type: MediaContent;
 }>();
-
 </script>
 
 <template>

@@ -43,6 +43,7 @@ export async function getContent({ id, media_type }: { id: string, media_type: '
             Authorization: `Bearer ${import.meta.env.VITE_API_TMDB_BEARER_TOKEN}`,
         },
     }).then((res) => {
+
         return res.json();
     });
 }
@@ -83,3 +84,29 @@ export const getSeasons = async ({ id, season_number }: { id: string, season_num
         return res.json();
     });
 }
+
+export const getMoviesRecommendations = async () => {
+    return fetch(`https://api.themoviedb.org/3/movie/popular?language=fr-FR&page=1`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_API_TMDB_BEARER_TOKEN}`,
+        },
+    }).then((res) => {
+
+        return res.json();
+    });
+}
+
+export const getTVShowsRecommendations = async () => {
+    return fetch(`https://api.themoviedb.org/3/tv/popular?language=fr-FR&page=1`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_API_TMDB_BEARER_TOKEN}`,
+        },
+    }).then((res) => {
+        return res.json();
+    });
+}
+

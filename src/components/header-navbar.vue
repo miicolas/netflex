@@ -5,9 +5,9 @@ import { RouterLink } from "vue-router";
 
 <template>
     <div class="flex justify-between">
-        <h1 class="text-bold text-xl">Pour vous</h1>
+        <h1 class="font-bold text-xl">Pour vous</h1>
        <RouterLink to="/search">
-        <Search/>
+        <Search class="w-6 h-6 font-bold text-white" :stroke-width="3"/>
        </RouterLink>
     </div>
 </template>

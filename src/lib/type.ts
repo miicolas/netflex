@@ -32,7 +32,7 @@ export interface TVShow extends MediaBase {
     }[]
 }
 
-export type MediaContent = "Movie" | "TVShow"
+export type MediaContent = "movie" | "tv"
 
 export interface TrendingItem {
     title: string | null;

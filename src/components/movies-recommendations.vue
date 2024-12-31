@@ -3,7 +3,7 @@ import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
 import { ChevronRightIcon } from 'lucide-vue-next';
 import CarouselView from './carousel-view.vue';
-import type { TrendingItem } from "../lib/type.ts";
+import type { TrendingItem, MediaContent } from "../lib/type.ts";
 
 const props = defineProps<{
   recommendationsMovies: TrendingItem[];
@@ -17,7 +17,7 @@ const moviesRecommendations = movies.map(movie => ({
   id: movie.id,
   name: movie.name || movie.title || '',
   poster_path: movie.poster_path,
-  media_type: 'movie'
+  media_type: 'movie' as MediaContent
 }));
 
 </script>

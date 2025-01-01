@@ -6,7 +6,8 @@ import {RouterLink} from 'vue-router';
 
 const props = defineProps<{
   trending: {
-    name: string;
+    name: string | null;
+    title: string | null;
     overview: string;
     poster_path: string;
     backdrop_path: string;
@@ -43,7 +44,7 @@ const backgroundImage = computed(() => {
   >
     <div class="absolute bottom-0 left-0 text-white z-10 space-y-2 p-4 gap-4">
       <div class="relative flex flex-col gap-2">
-        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">{{ props.trending.name }}</h1>
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">{{ props.trending.name  || props.trending.title }}</h1>
         <p class="text-gray-300 text-lg max-w-2xl">
           {{ props.trending.overview }}
         </p>

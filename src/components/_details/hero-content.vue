@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, defineProps } from "vue";
 import { Plus, Star } from "lucide-vue-next";
-import type { Movie, TVShow } from "../../lib/type.ts";
+import type { Movie, TVShow } from "../../lib/type";
 
 const props = defineProps<{
-  media: Movie | TVShow | null;
+  media: Movie | TVShow ;
   isTV: boolean;
   SmallScreen: boolean;
 }>();
@@ -17,8 +17,7 @@ const mediaTitle = computed(() => {
 const mediaRuntime = computed(() => {
   if (!props.media) return 0;
   if (props.isTV) {
-    const show = props.media as TVShow;
-    return show.episode_run_time?.[0] || 0;
+    return (props.media as TVShow).episode_run_time?.[0] || 0;
   }
   return (props.media as Movie).runtime || 0;
 });
@@ -44,7 +43,7 @@ const formatDate = (date: string) => {
 <template>
   <div class="relative h-[70vh]">
     <img
-        v-if="media?.backdrop_path"
+        v-if="media.backdrop_path"
         :src="`https://image.tmdb.org/t/p/original/${media.backdrop_path}`"
         :alt="mediaTitle"
         class="w-full h-full object-cover brightness-75 rounded-lg"
@@ -58,7 +57,7 @@ const formatDate = (date: string) => {
         <div class="flex items-center gap-4 text-gray-200">
           <div class="flex items-center">
             <Star class="w-5 h-5 text-yellow-400 mr-1" />
-            <span>{{ media?.vote_average?.toFixed(1) }}</span>
+            <span>{{ media.vote_average?.toFixed(1) }}</span>
           </div>
           <span>•</span>
           <span>{{ mediaRuntime }} min</span>
@@ -72,7 +71,7 @@ const formatDate = (date: string) => {
 
         <div class="flex flex-wrap gap-2">
           <span
-              v-for="genre in media?.genres || []"
+              v-for="genre in media.genres"
               :key="genre.id"
               class="px-3 py-1 bg-red-600 rounded-full text-sm text-white"
           >
